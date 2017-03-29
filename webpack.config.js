@@ -16,7 +16,9 @@ module.exports = {
       entryScssPath
     ],
     vendor: [
-      './node_modules/bootstrap/scss/bootstrap.scss'
+      './node_modules/normalize.css/normalize.css',
+      './node_modules/bootstrap/scss/bootstrap.scss',
+      './node_modules/animate.css/animate.css'
     ]
   },
   output: {

@@ -1,8 +1,22 @@
-html, body, #app {
-    height: 100%;
-    width: 100%;
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
 }
 
 #app {
-    background-color: hotpink;
+  background: #A1FFCE; /* fallback for old browsers */
+  background: linear-gradient(to left, #A1FFCE , #FAFFD1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  >div {
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .word-card {
+    box-shadow: 0px 5px 15px 1px #909090;
+  }
 }
