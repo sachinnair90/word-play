@@ -1,22 +1,47 @@
+// Color Variables
+$app-background-color: #faba20;
+$app-text-color: #b02632;
+
+// Box Shadow
+$box-shadow: -1px 1px 7px 0px #a2a2a2;
+
+// Font Variables
+$app-header-font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+$app-font-family: 'Amatic SC', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+$app-quiz-font-family: 'Fredericka the Great', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+
 html,
-body,
-#app {
+body {
   height: 100%;
   width: 100%;
-  font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: $app-font-family;
   font-size: 16px;
+  color: $app-text-color;
 }
 
-#app {
-  background: #A1FFCE; /* fallback for old browsers */
-  background: linear-gradient(to left, #A1FFCE , #FAFFD1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  >div {
+:global #app {
+  height: 100%;
+  width: 100%;
+  font-family: $app-font-family;
+  font-size: 16px;
+  color: $app-text-color;
+  background: $app-background-color;
+  > div {
     height: 100%;
     width: 100%;
     padding: 1em;
   }
 
+  .appHeader {
+    font-size: 7rem;
+  }
+
+  .word-card-container {
+    padding: 10vh 0;
+  }
+
   .word-card {
-    box-shadow: 0px 5px 15px 1px #909090;
+    box-shadow: $box-shadow;
+    border-radius: initial;
   }
 }

@@ -1,20 +1,21 @@
+// File paths
 const basePath = './app';
 const entryTsxPath = basePath + '/app.tsx';
-const entryScssPath = basePath + '/app.scss';
+const entryScssPath = basePath + '/styles/app.scss';
 const outputBasePath = './dist';
 const outputFileName = 'js/bundle.js';
 
 const webpack = require('webpack');
 const path = require('path');
+
+// Plugins
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    main: [
-      entryTsxPath,
-      entryScssPath
-    ],
+    main: entryTsxPath,
     vendor: [
       './node_modules/normalize.css/normalize.css',
       './node_modules/bootstrap/scss/bootstrap.scss',
@@ -41,7 +42,16 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           //resolve-url-loader may be chained before sass-loader if necessary
-          use: ['css-loader', 'sass-loader']
+          use: [
+            // Using source maps breaks urls in the CSS loader
+            // https://github.com/webpack/css-loader/issues/232
+            // This comment solves it, but breaks testing from a local network
+            // https://github.com/webpack/css-loader/issues/232#issuecomment-240449998
+            // 'css-loader?sourceMap',
+            'css-loader?importLoaders=1&modules&localIdentName=[name]__[local]',
+            'postcss-loader',
+            'sass-loader',
+          ],
         })
       },
       {
@@ -66,6 +76,13 @@ module.exports = {
       title: 'Lexi Eikasia',
       filename: 'index.html',
       template: 'index.html'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          Autoprefixer(),
+        ]
+      }
     })
   ]
 };
