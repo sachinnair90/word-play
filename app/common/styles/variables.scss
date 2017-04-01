@@ -1,2 +1,20 @@
+// Color Variables
+$app-background-color: #F1C40F;
+$app-text-color: #B02632;
+$word-letter-color: #8E44AD;
+$word-letter-border-color: #F39C12;
+$check-next-btn-color: #1ABC9C;
+$check-next-btn-hover-color: #16A085;
+$skip-btn-color: #95A5A6;
+$skip-btn-hover-color: #7F8C8D;
+$finish-btn-color: #34495E;
+$finish-btn-hover-color: #2C3E50;
+$word-points-color: #2ECC71;
+
 // Box Shadow
-$box-shadow: -1px 1px 7px 0px #a2a2a2;
+$box-shadow: -1px 1px 7px 0px rgba(123, 123, 123, 0.5);
+
+// Font Variables
+$app-header-font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+$app-font-family: 'Amatic SC', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+$word-letters-font: 'Fredericka the Great', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
