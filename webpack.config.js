@@ -39,6 +39,7 @@ module.exports = {
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           //resolve-url-loader may be chained before sass-loader if necessary
@@ -50,6 +51,17 @@ module.exports = {
             // 'css-loader?sourceMap',
             'css-loader?importLoaders=1&modules&localIdentName=[name]__[local]',
             'postcss-loader',
+            'sass-loader',
+          ],
+        })
+      },
+      {
+        test: /\.scss$/,
+        include: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
             'sass-loader',
           ],
         })

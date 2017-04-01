@@ -1,8 +1,12 @@
 import * as React from 'react';
+import * as CSSModules from 'react-css-modules';
 
+const cardStyles = require('./card.scss');
+
+@CSSModules(cardStyles)
 export class Card extends React.Component<any, any> {
     public render() {
-        return <div className='word-card card text-center'>
+        return <div className='card text-center' styleName='word-card'>
             <div className='card-header'>
                 Complete the word!
             </div>

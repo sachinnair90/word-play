@@ -1,9 +1,8 @@
+@import './common/styles/variables';
+
 // Color Variables
 $app-background-color: #faba20;
 $app-text-color: #b02632;
-
-// Box Shadow
-$box-shadow: -1px 1px 7px 0px #a2a2a2;
 
 // Font Variables
 $app-header-font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -19,29 +18,25 @@ body {
   color: $app-text-color;
 }
 
-:global #app {
+#container {
   height: 100%;
   width: 100%;
   font-family: $app-font-family;
   font-size: 16px;
   color: $app-text-color;
   background: $app-background-color;
+
   > div {
     height: 100%;
     width: 100%;
     padding: 1em;
   }
 
-  .appHeader {
+  .app-header {
     font-size: 7rem;
   }
 
   .word-card-container {
     padding: 10vh 0;
-  }
-
-  .word-card {
-    box-shadow: $box-shadow;
-    border-radius: initial;
   }
 }

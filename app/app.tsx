@@ -1,21 +1,25 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as CSSModules from 'react-css-modules';
+
 import { Card } from './components/card';
+
 const appStyles = require('./app.scss');
 
+@CSSModules(appStyles)
 class LexiEikasia extends React.Component<any, any> {
     public render() {
         return <div className='container'>
             <div className='row'>
                 <div className='col text-center'>
-                    <h1 className={ appStyles.appHeader }>Lexi Eikasia</h1>
+                    <h1 styleName='app-header'>Lexi Eikasia</h1>
                 </div>
             </div>
-            <div className='word-card-container row justify-content-center'>
+            <div className='row justify-content-center' styleName='word-card-container'>
                 <Card />
             </div>
         </div>;
     }
 }
 
-ReactDOM.render(<LexiEikasia />, document.getElementById('app'));
+ReactDOM.render(<LexiEikasia />, document.getElementById('app__container'));
