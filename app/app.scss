@@ -1,0 +1,42 @@
+@import './common/styles/variables';
+
+// Color Variables
+$app-background-color: #faba20;
+$app-text-color: #b02632;
+
+// Font Variables
+$app-header-font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+$app-font-family: 'Amatic SC', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+$app-quiz-font-family: 'Fredericka the Great', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: $app-font-family;
+  font-size: 16px;
+  color: $app-text-color;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  font-family: $app-font-family;
+  font-size: 16px;
+  color: $app-text-color;
+  background: $app-background-color;
+
+  > div {
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .app-header {
+    font-size: 7rem;
+  }
+
+  .word-card-container {
+    padding: 10vh 0;
+  }
+}
