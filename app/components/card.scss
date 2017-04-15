@@ -3,4 +3,80 @@
 .word-card {
   box-shadow: $box-shadow;
   border-radius: initial;
+
+  :global .card-header {
+    font-size: 2em;
+    line-height: 1.1em;
+    border: 0;
+  }
+
+  :global .card-block {
+    box-shadow: $box-shadow;
+    z-index: 2;
+
+    .card-text {
+      font-size: 1.3em;
+    }
+  }
+
+  :global .card-footer {
+    border: 0;
+  }
+
+  .hint-label {
+    font-weight: 800;
+    font-size: 1.2em
+  }
+
+  .word-letters {
+    font-size: 3em;
+    padding-bottom: 0.5em;
+
+    .word-letter {
+      font-family: $word-letters-font;
+      text-transform: uppercase;
+      color: $word-letter-color;
+      border: 0;
+      width: 1em;
+      border-bottom: 1px solid $word-letter-border-color;
+      margin-right: 0.2em;
+      outline: none;
+    }
+  }
+
+  .card-actions {
+    :global .btn {
+      font-size: 1.5em;
+      border-radius: 0;
+      color: white;
+    }
+
+    .check-next-btn {
+      background-color: $check-next-btn-color;
+      &:hover {
+        background-color: $check-next-btn-hover-color;
+      }
+    }
+
+    .skip-btn {
+      background-color: $skip-btn-color;
+      &:hover {
+        background-color: $skip-btn-hover-color;
+      }
+    }
+
+    .finish-btn {
+      background-color: $finish-btn-color;
+      &:hover {
+        background-color: $finish-btn-hover-color;
+      }
+    }
+  }
+
+  .word-points {
+    font-size: 2em;
+    color: $word-points-color;
+    font-weight: 800;
+    line-height: 1.1em;
+  }
 }

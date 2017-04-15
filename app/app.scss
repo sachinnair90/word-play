@@ -1,14 +1,5 @@
 @import './common/styles/variables';
 
-// Color Variables
-$app-background-color: #faba20;
-$app-text-color: #b02632;
-
-// Font Variables
-$app-header-font-family: 'Poiret One', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
-$app-font-family: 'Amatic SC', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
-$app-quiz-font-family: 'Fredericka the Great', cursive, Roboto, "Helvetica Neue", Arial, sans-serif;
-
 html,
 body {
   height: 100%;
@@ -30,6 +21,10 @@ body {
     height: 100%;
     width: 100%;
     padding: 1em;
+
+    >  div:first-child {
+      margin-top: 2em;
+    }
   }
 
   .app-header {
