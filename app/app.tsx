@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as CSSModules from 'react-css-modules';
 
 import { Card } from './components/card';
+import wordStore from './store/word.store';
 
 const appStyles = require('./app.scss');
 
@@ -16,7 +17,7 @@ class LexiEikasia extends React.Component<any, any> {
                 </div>
             </div>
             <div className='row justify-content-center' styleName='word-card-container'>
-                <Card />
+                <Card store={ wordStore }/>
             </div>
         </div>;
     }

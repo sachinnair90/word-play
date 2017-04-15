@@ -1,11 +1,41 @@
 import * as React from 'react';
 import * as CSSModules from 'react-css-modules';
 
+import { v4 as uuid } from 'uuid';
+import { observer } from 'mobx-react';
+
 const cardStyles = require('./card.scss');
 
 @CSSModules(cardStyles)
+@observer
 export class Card extends React.Component<any, any> {
+    public componentDidMount() {
+        this.getWord();
+    }
+
+    private getWord() {
+        this.props.store.getWord(this.props.store.getRandomWordLength());
+    }
+
+    private word() {
+        return this.props.store.word || [];
+    }
+
+    private meaning() {
+        return this.props.store.meaning || '';
+    }
+
     public render() {
+        const letters: Array<JSX.Element> = this.word().map((letter) =>
+                                                    <input key={uuid()}
+                                                            className='text-center'
+                                                            styleName='word-letter'
+                                                            type='text'
+                                                            maxLength={1}
+                                                            pattern='/\d?/'
+                                                            value={letter.isMasked ? '' : letter.value}/>
+                                                );
+
         return <div className='card text-center' styleName='word-card'>
             <div className='card-header'>
                 Complete the word!
@@ -15,7 +45,7 @@ export class Card extends React.Component<any, any> {
                     Special title treatment
                 </h4>
                 <p className='card-text'>
-                    With supporting text below as a natural lead-in to additional content.
+                    <span styleName='hint-label'>HINT:</span> <span>{this.meaning()}</span>
                 </p>
                 <a href='#' className='btn btn-primary'>
                     Go somewhere
