@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as CSSModules from 'react-css-modules';
-
 import { v4 as uuid } from 'uuid';
+
 import { observer } from 'mobx-react';
 
 const cardStyles = require('./card.scss');
@@ -41,18 +41,26 @@ export class Card extends React.Component<any, any> {
                 Complete the word!
             </div>
             <div className='card-block'>
-                <h4 className='card-title'>
-                    Special title treatment
-                </h4>
+                <div className='d-flex justify-content-center' styleName='word-letters'>
+                    {letters}
+                </div>
                 <p className='card-text'>
                     <span styleName='hint-label'>HINT:</span> <span>{this.meaning()}</span>
                 </p>
-                <a href='#' className='btn btn-primary'>
-                    Go somewhere
-                </a>
+                <div className='d-flex justify-content-around' styleName='card-actions'>
+                    <a href='#' className='btn' styleName='check-next-btn'>
+                        Check & Next
+                    </a>
+                    <a href='#' className='btn' styleName='skip-btn'>
+                        Skip
+                    </a>
+                    <a href='#' className='btn' styleName='finish-btn'>
+                        Finish
+                    </a>
+                </div>
             </div>
-            <div className='card-footer text-muted'>
-                2 days ago
+            <div className='card-footer' styleName='word-points'>
+                10 Points
             </div>
         </div>;
     }
