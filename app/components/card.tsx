@@ -17,23 +17,33 @@ export class Card extends React.Component<any, any> {
         this.props.store.getWord(this.props.store.getRandomWordLength());
     }
 
-    private word() {
+    private word(): Array<{ value: string, isMasked: boolean }> {
         return this.props.store.word || [];
     }
 
-    private meaning() {
+    private letters(): Array<string> {
+        return this.props.store.letters || [];
+    }
+
+    private meaning(): string {
         return this.props.store.meaning || '';
     }
 
+    private isCorrect(): boolean {
+        return this.props.store.isCorrect;
+    }
+
     public render() {
-        const letters: Array<JSX.Element> = this.word().map((letter) =>
-                                                    <input key={uuid()}
+        const letters: Array<JSX.Element> = this.letters().map((letter, index) =>
+                                                    <input key={['letter', index].join('_') }
                                                             className='text-center'
                                                             styleName='word-letter'
                                                             type='text'
                                                             maxLength={1}
                                                             pattern='/\d?/'
-                                                            value={letter.isMasked ? '' : letter.value}/>
+                                                            readOnly={ this.word()[index] ? !this.word()[index].isMasked : true }
+                                                            onChange={this.props.store.onLetterChange.bind(this.props.store, index)}
+                                                            value={letter}/>
                                                 );
 
         return <div className='card text-center' styleName='word-card'>
@@ -45,11 +55,11 @@ export class Card extends React.Component<any, any> {
                     {letters}
                 </div>
                 <p className='card-text'>
-                    <span styleName='hint-label'>HINT:</span> <span>{this.meaning()}</span>
+                    <span styleName='hint-label'>HINT:</span> <span>{this.isCorrect() ? 'Correct' : 'Incorrect' }</span>
                 </p>
                 <div className='d-flex justify-content-around' styleName='card-actions'>
                     <a href='#' className='btn' styleName='check-next-btn'>
-                        Check & Next
+                        Next
                     </a>
                     <a href='#' className='btn' styleName='skip-btn'>
                         Skip

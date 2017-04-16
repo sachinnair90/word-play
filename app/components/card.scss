@@ -13,6 +13,7 @@
   :global .card-block {
     box-shadow: $box-shadow;
     z-index: 2;
+    min-width: 350px;
 
     .card-text {
       font-size: 1.3em;

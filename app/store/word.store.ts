@@ -8,6 +8,8 @@ export interface IWordStore {
 
 class  WordStore implements IWordStore {
     @observable public word: Array<{ value: string, isMasked: boolean }>;
+    @observable public letters: Array<string>;
+    @observable public isCorrect: boolean;
     @observable public meaning: string = 'Currently not available!';
 
     private MIN_LENGTH: number = 3;
@@ -15,24 +17,29 @@ class  WordStore implements IWordStore {
 
     constructor() { }
 
-    public getWord(numberOfLetters: number = this.MIN_LENGTH) {
+    public getWord(numberOfLetters: number = this.MIN_LENGTH): void {
         axios.get('http://www.setgetgo.com/randomword/get.php', {
             params: {
                 len: numberOfLetters
             }
         }).then((response: any) => {
-            const word = response.data;
+            console.log(response.data);
+            const word = typeof response.data === 'string' ? response.data.toUpperCase() : response.data;
+            this.letters = [];
             this.word = word.split('').map(letter => {
+                const isMasked: boolean = Math.random() > 0.5;
+                this.letters.push(isMasked ? '' : letter);
+
                 return {
                     value: letter,
-                    isMasked: Math.random() > 0.5
+                    isMasked: isMasked
                 };
             });
             // this.getMeaning(this.word);
         });
     }
 
-    public getMeaning(word: string) {
+    public getMeaning(word: string): void {
         if (word === '') {
             return null;
         }
@@ -61,8 +68,19 @@ class  WordStore implements IWordStore {
             });
     }
 
-    public getRandomWordLength() {
+    public getRandomWordLength(): number {
         return Math.floor(Math.random() * (this.MAX_LENGTH - this.MIN_LENGTH + 1)) + this.MIN_LENGTH;
+    }
+
+    public onLetterChange(index: number, event: any): void {
+        this.letters[index] = typeof event.target.value === 'string' ? event.target.value.toUpperCase() : event.target.value;
+        this.checkWord();
+    }
+
+    public checkWord(): void {
+        this.isCorrect = this.letters.every((letter, index): boolean => {
+            return this.word[index].value === letter;
+        });
     }
 }
 
